@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>恒序基金会 HENGXU FOUNDATION</title>
+<style>
+/* ============ 表页面：恒序基金会 ============ */
+:root{
+  --paper:#F7F3EA;
+  --paper-dim:#EFE9DC;
+  --ink:#1C1B17;
+  --ink-soft:#4A473E;
+  --muted:#8A8577;
+  --pine:#2E5B4C;
+  --pine-deep:#1F4036;
+  --cinnabar:#B4452F;
+  --hairline:rgba(28,27,23,.16);
+  --serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:-apple-system,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.75;
+}
+::selection{background:var(--pine);color:var(--paper)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+
+/* 顶部 */
+.site-head{
+  border-bottom:1px solid var(--hairline);
+  position:sticky;top:0;background:rgba(247,243,234,.92);
+  backdrop-filter:blur(8px);z-index:50;
+}
+.head-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:14px}
+.seal{
+  width:40px;height:40px;flex:none;
+  border:2px solid var(--cinnabar);border-radius:6px;
+  display:grid;place-items:center;
+  color:var(--cinnabar);font-weight:700;font-size:15px;line-height:1.05;
+  letter-spacing:0;font-family:var(--serif);
+  transform:rotate(-2deg);
+}
+.brand-name{font-size:19px;font-weight:700;letter-spacing:.12em}
+.brand-en{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.34em;color:var(--muted);font-weight:400;margin-top:1px}
+.nav{display:flex;gap:clamp(16px,3vw,40px);font-size:14.5px;letter-spacing:.08em}
+.nav a{position:relative;padding:4px 0;color:var(--ink-soft);transition:color .25s}
+.nav a:hover{color:var(--pine)}
+.nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--pine);transition:width .3s}
+.nav a:hover::after{width:100%}
+@media(max-width:760px){.nav{display:none}}
+
+/* Hero */
+.hero{padding:clamp(72px,11vw,150px) 0 clamp(56px,8vw,110px);border-bottom:1px solid var(--hairline)}
+.eyebrow{
+  font-family:var(--sans);font-size:11.5px;letter-spacing:.42em;color:var(--pine);
+  display:flex;align-items:center;gap:14px;margin-bottom:34px;font-weight:500;
+}
+.eyebrow::before{content:"";width:42px;height:1px;background:var(--pine)}
+.hero h1{
+  font-size:clamp(38px,7.2vw,88px);font-weight:700;line-height:1.28;letter-spacing:.02em;
+  max-width:16em;
+}
+.hero h1 em{font-style:normal;color:var(--pine)}
+.hero-sub{
+  margin-top:38px;max-width:34em;color:var(--ink-soft);font-size:clamp(15px,1.5vw,17.5px);
+}
+.hero-meta{
+  margin-top:56px;display:flex;gap:clamp(28px,6vw,88px);flex-wrap:wrap;
+  border-top:1px solid var(--hairline);padding-top:30px;
+}
+.stat b{display:block;font-size:clamp(28px,3.4vw,42px);font-weight:700;letter-spacing:.02em}
+.stat span{font-family:var(--sans);font-size:12px;letter-spacing:.22em;color:var(--muted)}
+
+/* 章节 */
+section.block{padding:clamp(64px,9vw,120px) 0;border-bottom:1px solid var(--hairline)}
+.sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:clamp(36px,5vw,64px)}
+.sec-no{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--cinnabar)}
+.sec-title{font-size:clamp(26px,3.6vw,42px);font-weight:700;letter-spacing:.06em}
+.sec-title small{font-family:var(--sans);font-size:11px;letter-spacing:.32em;color:var(--muted);margin-left:16px;font-weight:400}
+
+/* 关于 */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,90px)}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr}}
+.about-lede{font-size:clamp(18px,2.1vw,23px);line-height:2;font-weight:500}
+.about-body{margin-top:26px;color:var(--ink-soft);font-size:15.5px}
+.about-body p+p{margin-top:1.1em}
+.motto{
+  border-left:3px solid var(--pine);padding:6px 0 6px 26px;
+  font-size:clamp(20px,2.4vw,27px);font-weight:700;line-height:1.9;letter-spacing:.04em;
+  align-self:start;position:sticky;top:110px;
+}
+.motto small{display:block;font-family:var(--sans);font-weight:400;font-size:11px;letter-spacing:.3em;color:var(--muted);margin-top:14px}
+
+/* 项目 */
+.prog{border-top:1px solid var(--hairline)}
+.prog-row{
+  display:grid;grid-template-columns:90px 1fr 1.2fr auto;gap:clamp(18px,4vw,56px);
+  align-items:baseline;padding:clamp(26px,3.6vw,42px) 0;border-bottom:1px solid var(--hairline);
+  transition:background .3s;cursor:default;
+}
+.prog-row:hover{background:var(--paper-dim)}
+.prog-idx{font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--muted)}
+.prog-name{font-size:clamp(20px,2.6vw,30px);font-weight:700;letter-spacing:.04em}
+.prog-name small{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.26em;color:var(--pine);font-weight:500;margin-top:6px}
+.prog-desc{color:var(--ink-soft);font-size:15px;max-width:38em}
+.prog-tag{font-family:var(--sans);font-size:11px;letter-spacing:.18em;color:var(--cinnabar);white-space:nowrap}
+@media(max-width:820px){.prog-row{grid-template-columns:1fr;gap:10px}}
+
+/* 披露 */
+.disc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+@media(max-width:820px){.disc-grid{grid-template-columns:1fr}}
+.disc{background:var(--paper);padding:clamp(28px,3.4vw,44px)}
+.disc h4{font-size:18px;letter-spacing:.06em;margin-bottom:14px}
+.disc h4::before{content:"—";color:var(--cinnabar);margin-right:10px}
+.disc p{font-size:14px;color:var(--ink-soft)}
+.disc .yr{font-family:var(--sans);font-size:11px;letter-spacing:.26em;color:var(--muted);display:block;margin-bottom:16px}
+
+/* 新闻 */
+.news-item{
+  display:grid;grid-template-columns:150px 1fr;gap:clamp(16px,3vw,48px);
+  padding:22px 0;border-bottom:1px solid var(--hairline);align-items:baseline;
+}
+.news-item time{font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;color:var(--muted)}
+.news-item h4{font-size:16.5px;font-weight:500;transition:color .25s}
+.news-item:hover h4{color:var(--pine)}
+.news-item h4::after{content:"→";margin-left:12px;color:var(--cinnabar);font-size:14px;opacity:0;transition:opacity .25s}
+.news-item:hover h4::after{opacity:1}
+
+/* 页脚 */
+.site-foot{padding:clamp(48px,7vw,88px) 0 40px}
+.foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:44px;border-bottom:1px solid var(--hairline)}
+.foot-brand{max-width:300px}
+.foot-brand p{font-size:13.5px;color:var(--muted);margin-top:16px}
+.foot-col h5{font-family:var(--sans);font-size:11px;letter-spacing:.3em;color:var(--muted);margin-bottom:18px;font-weight:500}
+.foot-col a{display:block;font-size:14px;color:var(--ink-soft);padding:4px 0;transition:color .25s}
+.foot-col a:hover{color:var(--pine)}
+.foot-base{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  padding-top:26px;font-family:var(--sans);font-size:11.5px;letter-spacing:.1em;color:var(--muted);
+}
+/* 隐藏入口 */
+.backdoor{
+  opacity:.28;transition:opacity .3s;letter-spacing:.2em;cursor:pointer;
+  border:1px solid transparent;padding:2px 8px;
+}
+.backdoor:hover{opacity:.85;color:var(--pine)}
+
+/* 登录弹窗 */
+.modal-mask{
+  position:fixed;inset:0;background:rgba(28,27,23,.55);backdrop-filter:blur(4px);
+  display:none;place-items:center;z-index:200;
+}
+.modal-mask.on{display:grid}
+.modal{
+  width:min(420px,92vw);background:var(--paper);border:1px solid var(--ink);
+  padding:40px 38px 34px;position:relative;
+  box-shadow:8px 8px 0 rgba(28,27,23,.9);
+  animation:mIn .28s ease-out;
+}
+@keyframes mIn{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+.modal.shake{animation:shk .4s}
+@keyframes shk{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-9px)}40%,80%{transform:translateX(9px)}}
+.modal h3{font-size:20px;letter-spacing:.14em;display:flex;align-items:center;gap:12px}
+.modal h3 .dot{width:8px;height:8px;background:var(--cinnabar);border-radius:50%}
+.modal .m-sub{font-family:var(--sans);font-size:11px;letter-spacing:.28em;color:var(--muted);margin:8px 0 26px}
+.m-field{margin-bottom:18px}
+.m-field label{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.26em;color:var(--ink-soft);margin-bottom:8px}
+.m-field input{
+  width:100%;background:transparent;border:none;border-bottom:1px solid var(--ink);
+  font-family:var(--sans);font-size:15px;padding:8px 2px;color:var(--ink);outline:none;
+  letter-spacing:.06em;
+}
+.m-field input:focus{border-bottom:2px solid var(--pine)}
+.m-err{
+  display:none;font-family:var(--sans);font-size:12px;color:var(--cinnabar);
+  letter-spacing:.08em;margin:4px 0 10px;
+}
+.m-err.on{display:block}
+.m-btn{
+  width:100%;margin-top:10px;background:var(--ink);color:var(--paper);border:none;
+  font-family:var(--serif);font-size:15px;letter-spacing:.4em;padding:13px 0;cursor:pointer;
+  transition:background .25s;
+}
+.m-btn:hover{background:var(--pine-deep)}
+.m-close{position:absolute;top:14px;right:16px;font-family:var(--sans);font-size:18px;color:var(--muted);cursor:pointer;background:none;border:none}
+.m-close:hover{color:var(--ink)}
+
+/* 404 */
+.page-404{min-height:78vh;display:grid;place-items:center;text-align:center;padding:80px 0}
+.page-404 .code{
+  font-size:clamp(90px,18vw,200px);font-weight:700;line-height:1;color:transparent;
+  -webkit-text-stroke:1.5px var(--ink);letter-spacing:.04em;
+}
+.page-404 h2{font-size:clamp(18px,2.4vw,26px);margin:28px 0 12px;letter-spacing:.1em}
+.page-404 p{color:var(--muted);font-size:14.5px;font-family:var(--sans);letter-spacing:.06em}
+.page-404 .home-link{
+  display:inline-block;margin-top:36px;border:1px solid var(--ink);padding:12px 42px;
+  font-size:14px;letter-spacing:.3em;transition:all .25s;
+}
+.page-404 .home-link:hover{background:var(--ink);color:var(--paper)}
+</style>
+</head>
+<body>
+
+<!-- ================= 表页面 ================= -->
+<div id="surface">
+  <header class="site-head">
+    <div class="wrap head-in">
+      <a class="brand" href="#/">
+        <span class="seal">恒<br>序</span>
+        <span class="brand-name">恒序基金会<span class="brand-en">HENGXU FOUNDATION</span></span>
+      </a>
+      <nav class="nav">
+        <a href="#about">关于我们</a>
+        <a href="#programs">公益项目</a>
+        <a href="#disclosure">信息公开</a>
+        <a href="#news">基金会动态</a>
+        <a href="#contact">联系我们</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="wrap">
+        <div class="eyebrow">EST. 1879 · 非公募公益基金会</div>
+        <h1>让<em>秩序</em>，<br>先于善意抵达。</h1>
+        <p class="hero-sub">
+          恒序基金会长期专注于灾后心理重建、社区韧性培育与公共记忆保存。
+          我们相信，真正的援助不是抵达现场的速度，而是离开之后，生活仍能继续。
+        </p>
+        <div class="hero-meta">
+          <div class="stat"><b>214<small style="font-size:.45em">座</small></b><span>项目覆盖城市 · 遍布全球</span></div>
+          <div class="stat"><b>17,328,416+</b><span>累计援助人次</span></div>
+          <div class="stat"><b>731+</b><span>合作机构</span></div>
+          <div class="stat"><b>147</b><span>年持续运营</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 关于 -->
+    <section class="block" id="about">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-no">01</span>
+          <h2 class="sec-title">关于我们<small>ABOUT</small></h2>
+        </div>
+        <div class="about-grid">
+          <div>
+            <p class="about-lede">
+              恒序基金会创立于 1879 年，是一家以「稳定」为核心工作方法的非公募公益基金会。
+            </p>
+            <div class="about-body">
+              <p>
+                我们的名字取自一句老话：恒者，久也；序者，次也。灾难之后的重建，
+                最缺的往往不是热情，而是能按次序、可持续地把事情一件件做完的耐心。
+              </p>
+              <p>
+                基金会下设心理援助、社区发展与档案保存三个工作方向，强调「先稳定、再评估、后介入」
+                的作业原则：在进入任何一个受助社区之前，我们先做的不是发放物资，
+                而是确认那里的生活秩序还能不能托得住更多的人。
+              </p>
+              <p>
+                我们不追求被看见。我们追求的是，多年以后没有人再需要想起我们。
+              </p>
+            </div>
+          </div>
+          <div class="motto">
+            先稳，再判，再治。
+            <small>FOUNDING PRINCIPLE · 创始原则</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 项目 -->
+    <section class="block" id="programs">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-no">02</span>
+          <h2 class="sec-title">公益项目<small>PROGRAMS</small></h2>
+        </div>
+        <div class="prog">
+          <div class="prog-row">
+            <span class="prog-idx">P—01</span>
+            <div class="prog-name">恒灯计划<small>BEACON PROGRAM</small></div>
+            <p class="prog-desc">
+              面向重大灾害幸存者及其家属的长期心理援助项目。以固定站点、固定人员、
+              固定回访周期的方式，为受灾社区提供不少于五年的陪伴式心理支持。
+              灯不必亮，但不能灭。
+            </p>
+            <span class="prog-tag">进行中 · 2011 至今</span>
+          </div>
+          <div class="prog-row">
+            <span class="prog-idx">P—02</span>
+            <div class="prog-name">拾光档案<small>KEEPSAKE ARCHIVE</small></div>
+            <p class="prog-desc">
+              公共记忆保存计划。为经历变迁的街区、村镇与家庭建立口述史与实物档案，
+              帮助人们确认「自己是谁、从哪里来」。我们相信，一个人只要还握得住自己的来处，
+              就还没有真正走失。
+            </p>
+            <span class="prog-tag">进行中 · 2015 至今</span>
+          </div>
+          <div class="prog-row">
+            <span class="prog-idx">P—03</span>
+            <div class="prog-name">稳态社区<small>STEADY COMMUNITY</small></div>
+            <p class="prog-desc">
+              社区韧性培育项目。通过邻里互助网络、应急演练与公共空间活化，
+              提升普通社区面对突发风险时的自我稳定能力——让秩序长在社区自己身上，
+              而不是依赖外来力量。
+            </p>
+            <span class="prog-tag">进行中 · 2019 至今</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 信息公开 -->
+    <section class="block" id="disclosure">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-no">03</span>
+          <h2 class="sec-title">信息公开<small>TRANSPARENCY</small></h2>
+        </div>
+        <div class="disc-grid">
+          <div class="disc">
+            <span class="yr">ANNUAL REPORT</span>
+            <h4>年度报告</h4>
+            <p>基金会年度工作报告与审计报告，每年 3 月 31 日前于本站公示，接受社会监督。</p>
+          </div>
+          <div class="disc">
+            <span class="yr">GOVERNANCE</span>
+            <h4>治理结构</h4>
+            <p>理事会现有理事九名，设监事一名。重大事项经理事会三分之二以上表决通过后执行。</p>
+          </div>
+          <div class="disc">
+            <span class="yr">DONATION</span>
+            <h4>捐赠查询</h4>
+            <p>捐赠人可凭捐赠编号查询款项去向。本基金会不公开募捐，仅接受定向捐赠。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 动态 -->
+    <section class="block" id="news">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-no">04</span>
+          <h2 class="sec-title">基金会动态<small>NEWS</small></h2>
+        </div>
+        <a class="news-item" href="#news">
+          <time>2026.08.14</time>
+          <h4>「恒灯计划」第十五期志愿者督导培训在临港完成</h4>
+        </a>
+        <a class="news-item" href="#news">
+          <time>2026.07.02</time>
+          <h4>恒序基金会 2025 年度工作报告与审计报告公示</h4>
+        </a>
+        <a class="news-item" href="#news">
+          <time>2026.05.21</time>
+          <h4>「拾光档案」与三所高校档案馆签署口述史共建协议</h4>
+        </a>
+        <a class="news-item" href="#news">
+          <time>2026.03.09</time>
+          <h4>稳态社区项目第三批试点社区名单公布</h4>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="site-foot" id="contact">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="#/">
+            <span class="seal">恒<br>序</span>
+            <span class="brand-name">恒序基金会<span class="brand-en">HENGXU FOUNDATION</span></span>
+          </a>
+          <p>地址：临港区海棠路 9 号 恒序楼 4F<br>邮箱：office@hengxu.org.cn<br>电话：021-XXXX-XXXX（工作日 9:00–17:30）</p>
+        </div>
+        <div class="foot-col">
+          <h5>基金会</h5>
+          <a href="#about">关于我们</a>
+          <a href="#programs">公益项目</a>
+          <a href="#disclosure">信息公开</a>
+        </div>
+        <div class="foot-col">
+          <h5>支持</h5>
+          <a href="#news">基金会动态</a>
+          <a href="#contact">联系我们</a>
+          <a href="#/">捐赠查询</a>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>© 1879–2026 恒序基金会 · 沪ICP备XXXXXXXX号</span>
+        <span class="backdoor" id="backdoor" title="">内部通道</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- 登录弹窗 -->
+<div class="modal-mask" id="loginMask">
+  <div class="modal" id="loginModal">
+    <button class="m-close" id="loginClose">×</button>
+    <h3><span class="dot"></span>工作人员登录</h3>
+    <div class="m-sub">STAFF ACCESS ONLY · 非公开系统</div>
+    <div class="m-field">
+      <label>工号 / 账号</label>
+      <input type="text" id="accInput" autocomplete="off" spellcheck="false" placeholder="请输入账号">
+    </div>
+    <div class="m-field">
+      <label>密码</label>
+      <input type="password" id="pwdInput" placeholder="请输入密码">
+    </div>
+    <div class="m-err" id="loginErr">账号或密码错误，请核对后重试。</div>
+    <button class="m-btn" id="loginBtn">登 录</button>
+  </div>
+</div>
+
+<!-- 404 -->
+<div class="page-404" id="page404" style="display:none">
+  <div>
+    <div class="code">404</div>
+    <h2>您访问的页面不存在</h2>
+    <p>该页面可能已被移动、删除，或从未存在过。</p>
+    <a class="home-link" href="#/">返回首页</a>
+  </div>
+</div>
+
+<!-- ================= 里页面：万界稳定局内网 BBS ================= -->
+<div id="bbs" style="display:none">
+  <div class="crt-overlay"></div>
+  <div class="crt-vignette"></div>
+
+  <!-- 启动序列 -->
+  <div class="boot" id="boot"><pre id="bootText"></pre><span class="cursor" id="bootCursor">█</span></div>
+
+  <!-- 论坛主体 -->
+  <div class="bbs-main" id="bbsMain" style="display:none">
+    <header class="bbs-head">
+      <div class="bbs-title">
+        <div class="bbs-logo">万界稳定局 · 内部通讯网络</div>
+        <div class="bbs-sub">MULTIVERSE STABILITY BUREAU — INTRANET BULLETIN SYSTEM v3.7.1</div>
+      </div>
+      <div class="bbs-status">
+        <div id="whoLine">—</div>
+        <div class="dR-ticker" id="dRTicker">全域 ΔR 均值 0.31 ▲ 缓升中</div>
+        <button class="logout-btn" id="logoutBtn">[ 断开连接 ]</button>
+      </div>
+    </header>
+    <div class="bbs-rule">※ 本网络全程处于认知防火墙监控之下。观测即污染，请按权限阅读。 ※</div>
+
+    <div class="bbs-body">
+      <!-- 版块列表 -->
+      <aside class="boards" id="boardList"></aside>
+
+      <!-- 内容区 -->
+      <section class="bbs-content">
+        <div class="content-bar">
+          <span id="crumb">载入中…</span>
+          <button class="t-btn" id="newThreadBtn">[ + 发布新帖 ]</button>
+        </div>
+        <div id="threadList"></div>
+        <div id="threadView" style="display:none"></div>
+
+        <!-- 发帖/回帖表单 -->
+        <div class="composer" id="composer" style="display:none">
+          <div class="composer-head" id="composerTitle">发布新帖</div>
+          <input type="text" id="postTitle" maxlength="60" placeholder="标题（必填）">
+          <textarea id="postBody" rows="6" placeholder="正文……请注意：本板禁止写入未分级的高危知识。"></textarea>
+          <div class="composer-actions">
+            <button class="t-btn primary" id="postSubmit">[ 提交 ]</button>
+            <button class="t-btn" id="postCancel">[ 取消 ]</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="bbs-foot">
+      <span>万界稳定局 中央总署 · 档案与认知安全总署 联合维护</span>
+      <span>连接节点：第七观测站 中继 03 · 延迟 0.00ms（本地）</span>
+    </footer>
+  </div>
+</div>
+
+<style>
+/* ============ 里页面：CRT 终端 ============ */
+#bbs{
+  position:fixed;inset:0;z-index:500;overflow-y:auto;
+  background:#050805;color:#00F48E;
+  font-family:"JetBrains Mono","Cascadia Mono","Sarasa Mono SC","Noto Sans Mono CJK SC",monospace;
+  font-size:14px;line-height:1.7;
+  text-shadow:0 0 6px rgba(0,244,142,.45);
+}
+#bbs ::selection{background:#00F48E;color:#000}
+.crt-overlay{
+  position:fixed;inset:0;pointer-events:none;z-index:600;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply;
+}
+.crt-vignette{
+  position:fixed;inset:0;pointer-events:none;z-index:601;
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.5) 100%);
+  animation:crtFlicker 4.2s infinite;
+}
+@keyframes crtFlicker{
+  0%,94%,100%{opacity:1}95%{opacity:.86}96%{opacity:.97}97.5%{opacity:.9}
+}
+.cursor{display:inline-block;animation:blink .5s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.boot{padding:8vh 6vw;white-space:pre-wrap;font-size:14.5px;min-height:60vh}
+.boot .ok{color:#00F48E}
+.boot .warn{color:#FFB000;text-shadow:0 0 6px rgba(255,176,0,.5)}
+.boot .err{color:#FF3B30;text-shadow:0 0 6px rgba(255,59,48,.5)}
+
+.bbs-main{max-width:1180px;margin:0 auto;padding:26px clamp(14px,3vw,40px) 40px;position:relative;z-index:2}
+.bbs-head{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;
+  border-bottom:2px solid #00F48E;padding-bottom:14px;
+}
+.bbs-logo{font-size:clamp(20px,3vw,30px);font-weight:700;letter-spacing:.18em}
+.bbs-sub{font-size:10.5px;letter-spacing:.24em;color:#0FA962;margin-top:4px}
+.bbs-status{text-align:right;font-size:12px}
+.dR-ticker{color:#FFB000;text-shadow:0 0 6px rgba(255,176,0,.5);margin:4px 0}
+.logout-btn,.t-btn{
+  background:none;border:1px solid #00F48E;color:#00F48E;font:inherit;font-size:12px;
+  padding:3px 12px;cursor:pointer;letter-spacing:.1em;transition:all .15s;
+}
+.logout-btn:hover,.t-btn:hover{background:#00F48E;color:#000;text-shadow:none}
+.t-btn.primary{border-color:#FFB000;color:#FFB000}
+.t-btn.primary:hover{background:#FFB000;color:#000}
+.bbs-rule{
+  text-align:center;font-size:11.5px;color:#0FA962;letter-spacing:.14em;
+  padding:10px 0;border-bottom:1px dashed rgba(0,244,142,.35);margin-bottom:22px;
+}
+.bbs-body{display:grid;grid-template-columns:250px 1fr;gap:26px;align-items:start}
+@media(max-width:860px){.bbs-body{grid-template-columns:1fr}}
+
+.board{border:1px solid rgba(0,244,142,.4);margin-bottom:14px;cursor:pointer;transition:background .15s}
+.board:hover{background:rgba(0,244,142,.08)}
+.board.active{background:rgba(0,244,142,.14);border-color:#00F48E}
+.board-head{padding:10px 12px;font-weight:700;letter-spacing:.08em;font-size:13.5px}
+.board-desc{padding:0 12px 10px;font-size:11px;color:#0FA962}
+.board.locked{border-color:rgba(255,176,0,.5)}
+.board.locked .board-head{color:#FFB000;text-shadow:0 0 6px rgba(255,176,0,.5)}
+.lock-tag{font-size:10px;color:#FFB000;margin-left:8px}
+
+.content-bar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  border-bottom:1px solid rgba(0,244,142,.4);padding-bottom:10px;margin-bottom:6px;
+  font-size:13px;letter-spacing:.06em;
+}
+.thread-row{
+  display:grid;grid-template-columns:1fr auto;gap:6px 18px;
+  padding:11px 6px;border-bottom:1px dashed rgba(0,244,142,.22);cursor:pointer;
+}
+.thread-row:hover{background:rgba(0,244,142,.07)}
+.thread-title{font-size:14px}
+.thread-title .pin{color:#FFB000;margin-right:6px}
+.thread-meta{font-size:11px;color:#0FA962;grid-column:1/-1;letter-spacing:.05em}
+.thread-count{font-size:11.5px;color:#0FA962;align-self:center;white-space:nowrap}
+.empty-tip{padding:34px 0;text-align:center;color:#0FA962;font-size:12.5px}
+
+.post{border:1px solid rgba(0,244,142,.35);margin-bottom:16px}
+.post-head{
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  background:rgba(0,244,142,.09);padding:8px 14px;font-size:12px;letter-spacing:.05em;
+}
+.post-head .lv{color:#FFB000}
+.post-body{padding:14px 16px;white-space:pre-wrap;font-size:13.5px}
+.post-body .redact{background:#00F48E;color:#00F48E;text-shadow:none;border-radius:1px;padding:0 2px}
+.post-body .warn-line{color:#FFB000;text-shadow:0 0 6px rgba(255,176,0,.5)}
+.thread-title-big{
+  font-size:clamp(17px,2.4vw,22px);font-weight:700;letter-spacing:.06em;
+  border-left:4px solid #00F48E;padding-left:14px;margin-bottom:18px;line-height:1.5;
+}
+.back-link{font-size:12px;cursor:pointer;color:#0FA962;display:inline-block;margin-bottom:16px}
+.back-link:hover{color:#00F48E}
+
+.composer{border:1px solid #FFB000;margin-top:22px;padding:16px}
+.composer-head{color:#FFB000;font-size:13px;letter-spacing:.14em;margin-bottom:12px}
+.composer input,.composer textarea{
+  width:100%;background:rgba(0,244,142,.04);border:1px solid rgba(0,244,142,.4);
+  color:#00F48E;font:inherit;font-size:13px;padding:9px 12px;outline:none;margin-bottom:12px;
+  text-shadow:0 0 4px rgba(0,244,142,.3);
+}
+.composer input:focus,.composer textarea:focus{border-color:#00F48E}
+.composer-actions{display:flex;gap:12px}
+
+.bbs-foot{
+  margin-top:44px;border-top:1px dashed rgba(0,244,142,.35);padding-top:12px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  font-size:10.5px;color:#0FA962;letter-spacing:.1em;
+}
+.fw-block{
+  border:1px solid #FF3B30;color:#FF3B30;padding:30px 20px;text-align:center;
+  text-shadow:0 0 8px rgba(255,59,48,.6);letter-spacing:.12em;font-size:13.5px;
+  animation:fwFlash 1.2s steps(2) 3;
+}
+@keyframes fwFlash{50%{background:rgba(255,59,48,.12)}}
+</style>
+
+<script>
+/* ================= 账号库（稳定局出场人物拼音） ================= */
+const ACCOUNTS = {
+  "linwu":      { name:"林雾",   role:"锚点审计师", level:"L3" },
+  "shenyan":    { name:"沈砚",   role:"界域巡检员", level:"L1" },
+  "baizhi":     { name:"白枝",   role:"界域巡检员", level:"L1" },
+  "hanzhong":   { name:"韩重",   role:"界域巡检员", level:"L1" },
+  "zhouqiming": { name:"周启明", role:"界域巡检员", level:"L1" },
+  "gunanqi":    { name:"顾南祈", role:"界域巡检员", level:"L1" },
+  "yuxiaotang": { name:"于小棠", role:"界域巡检员", level:"L1" }
+};
+const PASSWORD = "wjwdj666";
+
+/* ================= 路由与闸门 ================= */
+const surface = document.getElementById('surface');
+const page404 = document.getElementById('page404');
+const bbs = document.getElementById('bbs');
+
+function isAuthed(){ return !!sessionStorage.getItem('msb_auth'); }
+function currentUser(){
+  try{ return JSON.parse(sessionStorage.getItem('msb_auth')); }catch(e){ return null; }
+}
+
+function route(){
+  const h = location.hash;
+  const inPageAnchor = ['#about','#programs','#disclosure','#news','#contact'].includes(h);
+  if(h === '' || h === '#/' || inPageAnchor){
+    surface.style.display = ''; page404.style.display = 'none'; bbs.style.display = 'none';
+    document.title = '恒序基金会 HENGXU FOUNDATION';
+    return;
+  }
+  if(h === '#/bbs'){
+    if(isAuthed()){
+      surface.style.display = 'none'; page404.style.display = 'none'; bbs.style.display = '';
+      document.title = 'MSB-BBS';
+      enterBBS();
+    } else {
+      show404();
+    }
+    return;
+  }
+  show404();
+}
+function show404(){
+  surface.style.display = 'none'; bbs.style.display = 'none'; page404.style.display = '';
+  document.title = '404 · 恒序基金会';
+}
+window.addEventListener('hashchange', route);
+
+/* ================= 登录 ================= */
+const mask = document.getElementById('loginMask');
+const modal = document.getElementById('loginModal');
+const accInput = document.getElementById('accInput');
+const pwdInput = document.getElementById('pwdInput');
+const loginErr = document.getElementById('loginErr');
+
+document.getElementById('backdoor').addEventListener('click', () => {
+  mask.classList.add('on'); loginErr.classList.remove('on');
+  accInput.value=''; pwdInput.value=''; accInput.focus();
+});
+document.getElementById('loginClose').addEventListener('click', () => mask.classList.remove('on'));
+mask.addEventListener('click', e => { if(e.target === mask) mask.classList.remove('on'); });
+
+function tryLogin(){
+  const acc = accInput.value.trim().toLowerCase();
+  const pwd = pwdInput.value;
+  if(ACCOUNTS[acc] && pwd === PASSWORD){
+    sessionStorage.setItem('msb_auth', JSON.stringify(ACCOUNTS[acc]));
+    sessionStorage.removeItem('msb_booted');
+    mask.classList.remove('on');
+    location.hash = '#/bbs';
+  } else {
+    loginErr.classList.add('on');
+    modal.classList.remove('shake'); void modal.offsetWidth; modal.classList.add('shake');
+  }
+}
+document.getElementById('loginBtn').addEventListener('click', tryLogin);
+[pwdInput, accInput].forEach(el => el.addEventListener('keydown', e => { if(e.key === 'Enter') tryLogin(); }));
+
+/* ================= 启动序列 ================= */
+let booted = false;
+function enterBBS(){
+  const u = currentUser();
+  document.getElementById('whoLine').textContent =
+    `${u.name} · ${u.role} · 权限 ${u.level}`;
+  if(sessionStorage.getItem('msb_booted')){ showForum(); return; }
+  if(booted){ showForum(); return; }
+  booted = true;
+  runBoot(u);
+}
+function runBoot(u){
+  const bootEl = document.getElementById('boot');
+  const txt = document.getElementById('bootText');
+  document.getElementById('bbsMain').style.display = 'none';
+  bootEl.style.display = '';
+  const lines = [
+    ['> 建立加密链路 ………………………… 完成','ok'],
+    ['> 认知防火墙 v4.2 校验中 ………… 通过','ok'],
+    ['> 检测阅读者认知污染指数 ……… 0.03（安全）','ok'],
+    [`> 身份核验：${u.name} · ${u.role}`,'ok'],
+    [`> 权限等级：${u.level} —— 超出权限的内容将不予渲染`,'warn'],
+    ['> 正在接入 万界稳定局内部通讯网络 …','ok'],
+    ['','ok'],
+    ['  欢迎回来。','ok'],
+    ['  请记住：你看到的一切，以你能承受为限。','warn'],
+  ];
+  let li = 0;
+  function nextLine(){
+    if(li >= lines.length){
+      setTimeout(() => {
+        bootEl.style.display = 'none';
+        sessionStorage.setItem('msb_booted','1');
+        showForum();
+      }, 900);
+      return;
+    }
+    const [text, cls] = lines[li++];
+    const span = document.createElement('span');
+    span.className = cls;
+    txt.appendChild(span);
+    let ci = 0;
+    const iv = setInterval(() => {
+      span.textContent = text.slice(0, ++ci);
+      if(ci >= text.length){ clearInterval(iv); txt.appendChild(document.createTextNode('\n')); setTimeout(nextLine, 160); }
+    }, 14);
+  }
+  nextLine();
+}
+function showForum(){
+  document.getElementById('boot').style.display = 'none';
+  document.getElementById('bbsMain').style.display = '';
+  renderBoards(); renderThreadList(state.board);
+  // ΔR 微波动
+  clearInterval(window._drIv);
+  window._drIv = setInterval(() => {
+    const v = (0.31 + (Math.random()-.5)*0.02).toFixed(3);
+    const arrow = Math.random() > .45 ? '▲' : '▼';
+    document.getElementById('dRTicker').textContent = `全域 ΔR 均值 ${v} ${arrow} 缓升中`;
+  }, 2600);
+}
+
+/* ================= 论坛数据 ================= */
+const BOARDS = [
+  { id:'notice', name:'■ 总署公告', desc:'中央总署及六大总署发布的正式通告。只读。', ro:true },
+  { id:'ops',    name:'■ 任务简报', desc:'各分域局行动简报与复盘归档。' },
+  { id:'theory', name:'■ 异常研讨', desc:'规则、ΔR 与修复协议的学术性争论区。' },
+  { id:'lounge', name:'■ 观测站茶水间', desc:'值班间隙的非正式交流。禁止谈论未分级高危知识。' },
+  { id:'vault',  name:'■ 封存区', desc:'高危条目调阅区。', lock:'L3' },
+];
+
+const SEED = {
+notice: [
+  { id:'n1', pin:true, title:'【通告】关于 ΔR 中阈值波动区巡检频次调整的通知', author:'观测总署 · ΔR监测厅', lv:'L2', time:'2026-08-28 09:00',
+    body:'各分域稳定局、各边界观测站：\n\n近期多个分域 ΔR 读数持续处于中阈值波动区间。经最高稳定议会观测席批准，自 9 月 1 日起：\n\n一、中阈值波动区巡检频次由每 72 小时一次调整为每 36 小时一次；\n二、巡检员须双人成行，禁止单人执行锚点初测；\n三、读数出现连续三次环比上升的站点，须在 12 小时内上报异常预警厅。\n\n不是看到怪物再动手。先判断该区域是否正在进入规则读写错误状态。\n\n——观测总署' },
+  { id:'n2', title:'【通告】记忆减压与洗脱室预约系统维护通知', author:'档案与认知安全总署', lv:'L1', time:'2026-08-25 14:30',
+    body:'记忆减压与洗脱室预约系统将于本周六 02:00–06:00 停机维护。\n\n维护期间已预约的减压时段自动顺延，无需重新排队。\n\n再次提醒：L4 及以上权限持有者必须按周期接受阶段性记忆减压，不得以「我感觉良好」为由缺席。你的感觉良好，不属于可采信证据。\n\n——认知防火墙中心' },
+  { id:'n3', title:'【人事】第六批认知防火墙升级完成，请相关站点校验员签到确认', author:'认知防火墙中心', lv:'L1', time:'2026-08-19 11:20',
+    body:'第六批认知防火墙（静默分域下属 12 个站点）升级已完成。\n\n请各站认知校验官于本周内登录本板签到确认，并组织全员进行一次身份连续性自检：\n说出你的姓名、岗位、以及今天早饭吃了什么。\n三项中任何一项答不上来的，立即离岗并接受校验。\n\n——认知防火墙中心' },
+  { id:'n4', title:'【联合通告】关于规范各站「异常体临时称呼」的通知', author:'封存书记官联席会', lv:'L1', time:'2026-08-12 10:00',
+    body:'近期发现部分站点在简报中使用自创绰号称呼异常体，如「那个会走路的」「二号麻烦」「老熟人」等。\n\n重申纪律：\n\n一、所有异常体必须使用分级编号，禁止拟人化昵称；\n二、尤其禁止给「能听懂人话」的异常体起名字——你叫它一声，它应你一声，第三次它就知道该找谁了；\n三、已起的名字，由认知校验官统一做脱敏处理。\n\n书记官的职责是决定什么能被写进档案。请不要让我们的工作变得更难。\n\n——封存书记官联席会' },
+  { id:'n5', title:'【能源】第三季度规则能量配额分配方案（附各分域缺口说明）', author:'后勤与规则能源总署 · 规则能量调度厅', lv:'L2', time:'2026-08-08 15:45',
+    body:'第三季度配额已下发至各分域稳定局，要点如下：\n\n一、全域配额总量环比下调 6%，缺口主要源于门户厅三座跨界门户的例行检修；\n二、静默分域、叠合分域因 ΔR 读数走高，按议会特批各追加 4% 应急额度；\n三、各站稳定场核心「降载运行」期间，须同步向观测总署报备值守排班，不得以降载为由空岗。\n\n重申一次本厅墙上有、各位耳朵里也有的那句话：使用规则能量本身会提升 ΔR。我们给的越少，是在替你们扛得越多。省着用。\n\n——规则能量调度厅' },
+  { id:'n6', title:'【悼告】执行总署逆流压制司 三级干预官 陈屿 同志讣告', author:'中央总署 · 总务', lv:'L1', time:'2026-08-05 08:00',
+    body:'逆流压制司三级干预官陈屿，于 8 月 2 日腐朽分域逆流压制行动中，为掩护修复组撤离，存在负债突破临界，于当日 23:41 宣告不可逆，按本人预立意愿执行静默封存。\n\n陈屿同志入职十九年，参与行动 214 次，带回的人比他自己的名字还多。\n\n追授「秩序之锚」称号。其工牌按例封存于总署纪念墙，工号永久停用，不再分配。\n\n请各站于今日 12:00 降载稳定场一分钟。\n\n——中央总署' },
+],
+ops: [
+  { id:'o1', pin:true, title:'【简报】静默分域 · 旧灯塔群 ΔR 连续三日缓升（第七观测站）', author:'第七观测站 · 记录官', lv:'L2', time:'2026-08-30 22:14',
+    body:'灯塔群沿岸 ΔR 连续三日缓升，幅度不大，但曲线形态不好看。\n\n异常点：报码表、值守册等纸质记录的缺页率高于常年均值。纸在丢，而且丢得很有规律——丢的都是「谁那天在塔里」的那几页。\n\n已按新规执行 36 小时双巡。维修局那边配合度很高，就是一线人员明显睡不好，申请后勤酌情增发认知护具。\n\n暂按观察区处置，不建议升级封锁。锚点审计组已介入。', 
+    replies:[
+      { author:'锚点审计 · 林', lv:'L3', time:'2026-08-31 08:02', body:'缺页规律已阅。先别补登，也别让任何人凭记忆把名单「补全」。缺着的就让它缺着，补上去的未必还是原来那个人。' },
+      { author:'第七观测站 · 记录官', lv:'L2', time:'2026-08-31 09:47', body:'收到。已通知维修局旧楼暂停一切档案补录。' },
+    ]},
+  { id:'o2', title:'【复盘】叠合分域回响拆解行动：成本超支 41%，但人全回来了', author:'回响拆解司 · 现场指挥', lv:'L3', time:'2026-08-21 18:40',
+    body:'行动结束，复盘要点三条：\n\n1. 稳定场展开耗时比预案多 11 分钟，原因是门户厅给的规则能量配额打了七折。请后勤与规则能源总署就「七折」给个说法。\n2. 拆解窗口期内同位体干扰比预估强，下次建议高危接触司提前 24 小时进场。\n3. 全员生还，两人存在负债超标，已转存在负债恢复处。\n\n成本超支 41%。但按我局算法，人全回来就是盈利。' },
+  { id:'o3', title:'【简报】静默分域 · 港北旧防空洞区域封控已完成（第七观测站协防）', author:'封控总署 · 区域隔离厅', lv:'L2', time:'2026-08-27 19:20',
+    body:'港北旧防空洞周边 ΔR 峰值一度触及高阈值下限，按标准七步流程处置完毕：\n\n一、临时封存工程队 4 小时内完成外围封锁墙与锚点屏障搭建；\n二、洞内第二层以下区域划为静默区，禁止一切人员进入，包括「进去过」的人；\n三、锚点审查结论：区域整体锚点结构完整，个别位置出现「白痕」式松动，已列入长期观测清单；\n四、周边居民的记忆重构由修复总署按低烈度方案执行，对外口径为「燃气管道检修」。\n\n特别说明：处置期间洞内持续传出敲击声，节奏固定。经评估为结构性回声，不予响应。\n\n再说一遍，不予响应。', 
+    replies:[
+      { author:'第七观测站 · 站长', lv:'L2', time:'2026-08-27 21:03', body:'补充现场细节：敲击声每天 04:00 前后最清晰，像是从下面往上数着敲。我站记录官想把这个节奏写进值班日志，被我否了——写下来，它就成了一句话。' },
+      { author:'规则修复协议处 · 协议撰写', lv:'L2', time:'2026-08-28 09:30', body:'「不予响应」四个字请在所有后续简报里置顶。上次类似事件里，第一个出事的观测员就是先在日志里「回应」了它。' },
+    ]},
+  { id:'o4', title:'【求援】腐朽分域第 12 封锁节点：稳定场核心备件告急', author:'第 12 封锁节点 · 值守组长', lv:'L1', time:'2026-08-23 13:55',
+    body:'节点稳定场核心连续满负荷 19 天，备用核心只剩一枚，按当前损耗率撑不过两周。\n\n已向分域封锁厅递交三次申请，回复均为「排队中」。\n\n本节点下游 6 公里有一座两万人的镇子。请调度厅看到此帖后优先评估。我们不需要解释，我们需要备件。', 
+    replies:[
+      { author:'维保工程厅 · 值班调度', lv:'L2', time:'2026-08-23 15:20', body:'已从邻域调剂两枚核心，走 4 号门户，预计 40 小时内抵达。另外，你们核心的散热阵列是不是三年没清了？损耗率比同型节点高一倍，到货后先清灰再哭穷。' },
+      { author:'第 12 封锁节点 · 值守组长', lv:'L1', time:'2026-08-24 08:41', body:'收到，多谢。散热阵列的事……我们这就去清。' },
+    ]},
+  { id:'o5', title:'【复盘】治疗实验区第 41 号修复个案：记忆重构部分成功', author:'修复总署 · 记忆重构处', lv:'L3', time:'2026-08-16 17:30',
+    body:'个案背景：女性，约 30 岁，海边灯塔区回收，身份记录、户籍、亲属关系全部静默，仅记得自己「在一座塔里待过很久」。\n\n处置：三轮记忆重构 + 一次锚点重置。\n\n结果：成功重建基础身份框架，能说出自己的名字，能认出早餐摊的老板。但其关于「塔」的记忆无法重构——不是缺失，是每次重构到那一段，记录纸就变成空白。\n\n结论：部分成功。那部分「填不上」的记忆，建议不再尝试填。修复的原则是让现实回到它应该有的样子，不是把她变成我们想要的样子。\n\n已转入存在负债恢复处长期随访。', 
+    replies:[
+      { author:'存在负债恢复处 · 医师', lv:'L2', time:'2026-08-16 18:12', body:'她今天主动问我能不能留下来做义工。我没答应，也没拒绝。先让她把早饭吃明白吧。' },
+      { author:'锚点审计 · 林', lv:'L3', time:'2026-08-16 19:05', body:'「记录纸变空白」的情况请归档至静默分域特殊案例索引，编号前缀 A-，不要进普通卷宗。回头我过去看。' },
+    ]},
+],
+theory: [
+  { id:'t1', title:'「观测即污染」到底有没有安全阈值？谈谈我的三组数据', author:'概率事件分析室 · 研究员', lv:'L2', time:'2026-08-27 16:05',
+    body:'抛砖引玉。我统计了近五年 214 起认知污染事件，发现污染发生率与「阅读时长」相关性很弱，与「读者是否试图复述内容」相关性极强。\n\n换句话说：看，不一定出事；试图把它讲给别人听，几乎必然出事。\n\n这是否意味着认知防火墙的重点应该从「挡眼睛」转向「挡嘴」？欢迎拍砖。',
+    replies:[
+      { author:'高危知识封存库 · 书记', lv:'L3', time:'2026-08-27 17:33', body:'数据有意思，但结论我不认。「挡嘴」意味着我们要监控每一个人的每一次表达，那我们自己先成了最大的污染源。' },
+      { author:'规则修复协议处 · 协议撰写', lv:'L2', time:'2026-08-28 10:12', body:'补充一个反例：去年港区那起集体梦事件，没有人复述任何东西，污染照样扩散了。有些异常不靠嘴，靠梦。' },
+    ]},
+  { id:'t2', title:'治愈派和封锁派能不能换个地方吵，食堂是大家吃饭的地方', author:'匿名（已备案）', lv:'L1', time:'2026-08-24 12:31',
+    body:'今天中午，修复总署和封控总署的两桌人，隔着一条过道争论「不可逆阶段的判定权到底归谁」，声音大到我的面都凉了。\n\n我理解这个议题很重要。它关乎每个异常体还能不能被当作「人」来看待。\n\n但是，各位，食堂是大家吃饭的地方。要吵去会议室吵，吵出结果记得发公告。\n\n——一个只想安静吃面的巡检员',
+    replies:[
+      { author:'区域隔离厅 · 值班', lv:'L2', time:'2026-08-24 13:05', body:'支持楼主。另外替封锁派说一句：我们不是想抹掉谁，我们只是怕拖到最后，连「还有谁可以被救」这个问题本身都失去意义。' },
+      { author:'存在负债恢复处 · 医师', lv:'L2', time:'2026-08-24 15:58', body:'也替治愈派说一句：只要还有锚点，就还有救。这句话不是口号，是我们科室墙上贴的排班表——每个名字后面都跟着一个还没放弃的人。' },
+    ]},
+  { id:'t3', title:'ΔR 读数会不会「骗人」？一个观测员十年数据里的三个疑点', author:'边界观测站 · 资深观测员', lv:'L2', time:'2026-08-26 23:47',
+    body:'值夜班十年，攒了三个一直想不通的疑点，趁版面安静说一说：\n\n疑点一：有七次，ΔR 在没有任何异常事件的情况下午夜准时跳升 0.02，四十分钟后回落。像什么事物在「路过」。\n\n疑点二：所有「路过」事件发生的夜晚，站内那台老式挂钟的秒针都是倒着走的。设备科查不出毛病。\n\n疑点三：我把这七次事件的日期排在一起，间隔在稳定缩短。\n\n我不想说结论。数据都在这了。', 
+    replies:[
+      { author:'ΔR监测厅 · 数据分析', lv:'L3', time:'2026-08-27 00:58', body:'间隔缩短这条请立刻走正式渠道上报，不要只发在论坛。「稳定缩短」在预测模型里只有一种含义，而那种含义不适合出现在茶水间上面的版块。' },
+      { author:'边界观测站 · 资深观测员', lv:'L2', time:'2026-08-27 01:10', body:'明白，已提交。另外挂钟我申请封存了，设备科舍不得，我说那不是钟的问题了。' },
+      { author:'概率事件分析室 · 研究员', lv:'L2', time:'2026-08-27 09:15', body:'「路过」这个用词非常准确。我们室去年给这类事件起了个内部代号，但我不能在这里写。等你的正式报告上来，大概率会并案。' },
+    ]},
+  { id:'t4', title:'记忆减压算工伤吗？——关于 L4 人员心理健康保障的建议', author:'伦理席驻总署联络员', lv:'L3', time:'2026-08-20 14:08',
+    body:'L4 及以上人员每季度必须接受记忆减压，这是纪律，我不反对。\n\n但请注意一个被长期忽视的问题：减压删掉的不只是「危险记忆」，常常连带删掉当事人那段时间的全部生活——有人忘了女儿的家长会，有人忘了自己为什么养了那只猫。\n\n我们保护他们不被知识污染，然后对他们的生活被一并删去这件事，只报销一顿食堂的汤。\n\n建议：一、减压前增加「生活记忆备份」流程；二、减压后 72 小时内安排认知校验官随访，而不是让他们自己走回宿舍。', 
+    replies:[
+      { author:'记忆减压与洗脱室 · 主任', lv:'L3', time:'2026-08-20 15:30', body:'建议收下了。「生活记忆备份」技术上可行，但有一个伦理障碍：备份的记忆要不要告诉当事人它存在？告诉他，等于提醒他忘了什么；不告诉他，那份备份由谁保管、凭什么保管？这不是推托，这是真问题。' },
+      { author:'伦理席驻总署联络员', lv:'L3', time:'2026-08-20 16:02', body:'所以我说的是「建议」，不是「方案」。真问题值得真的吵一次，来会议室吵，我泡茶。' },
+    ]},
+],
+lounge: [
+  { id:'l1', title:'后勤又砍我们站的规则能量配额了，这个月第三次', author:'边界观测站 · 维护工程员', lv:'L1', time:'2026-08-29 20:12',
+    body:'如题。站里稳定场核心现在每天只敢开 16 个小时，剩下 8 小时靠人盯着。\n\n跟后勤理论，对方的回复原话是：「使用规则能量本身会提升 ΔR，你们越维稳越接近失稳，省着点用是在保护你们。」\n\n道理我都懂。但是大哥，ΔR 升不升是下个月的事， stable场今晚不开，我们站今晚就可能没了。',
+    replies:[
+      { author:'跨界门户厅 · 调度', lv:'L2', time:'2026-08-29 21:40', body:'别骂了别骂了，我们厅这个月被六个总署同时催。全局的能量缺口是结构性的，不是哪个厅抠门。' },
+      { author:'边界观测站 · 站长', lv:'L2', time:'2026-08-30 07:15', body:'已把情况写入本站月度报告并抄送分域稳定长。另外，今晚稳定场照常开满，出了事算我的。' },
+    ]},
+  { id:'l2', title:'有人知道记忆减压现在要排多久吗？', author:'收容处理站 · 初筛员', lv:'L1', time:'2026-08-26 19:03',
+    body:'上周处理了一个「一直在学别人做梦」的个案，回来以后连续四晚梦见自己在一座不存在的城市里排队。\n\n按规定我该去做减压了，但预约系统显示前面还有 47 个人。\n\n有没有过来人讲讲，排到之前这段时间，睡觉需要注意什么？',
+    replies:[
+      { author:'记忆重构处 · 值班', lv:'L2', time:'2026-08-26 19:44', body:'一、睡前把姓名、岗位、今早吃了什么写在纸上放枕边。二、梦里如果排队排到了窗口，不要递任何东西，也不要接任何东西。三、47 人不算久，上个月峰值 112。' },
+      { author:'认知校验官 · 轮值', lv:'L3', time:'2026-08-26 21:02', body:'已帮你加急。另外，你发帖用的措辞和上周那位初筛员几乎一样——这不是批评，是提醒：你们处理的是同一类个案，互相讲讲经历，比一个人扛着强。' },
+    ]},
+  { id:'l3', title:'[闲聊] 你们工牌背面印的那行小字，都是什么？', author:'临时封存工程队 · 队员', lv:'L1', time:'2026-08-18 22:37',
+    body:'今天才发现每个人工牌背面那行小字不一样。我的是「墙立住之前，不许退」。\n\n问了一圈：记录官的是「写下来的才算数」，存在医师的是「今天也要把人带回家」。\n\n你们的是什么？',
+    replies:[
+      { author:'边界观测站 · 观测员', lv:'L1', time:'2026-08-18 23:11', body:'「先看见，再害怕。」' },
+      { author:'规则工程师 · 维保', lv:'L1', time:'2026-08-19 08:26', body:'「我修的不是机器。」' },
+    ]},
+  { id:'l4', title:'你们值班的时候都吃什么？给我站食堂一点灵感', author:'边界观测站 · 炊事员（兼职观测员）', lv:'L1', time:'2026-08-22 17:44',
+    body:'站上七个人，夜班六个。大师傅就我一个，还是兼职的。\n\n目前夜班菜单已经循环到第三十七轮，今晚又是土豆泥。记录官说再吃土豆泥他就要往总署写匿名信了。\n\n求各位站友分享点做法简单、能放、半夜吃了不做噩梦的夜班伙食。真的，做梦那个不是玩笑，上个月有兄弟梦到自己被一碗粥追。', 
+    replies:[
+      { author:'收容处理站 · 炊事班', lv:'L1', time:'2026-08-22 18:20', body:'海带丝拌豆干，一次拌一大盆放冷藏，夜班挖一勺。关键是——别做粥。别问为什么，这是全系统食堂的默契。' },
+      { author:'临时封存工程队 · 队员', lv:'L1', time:'2026-08-22 19:02', body:'我们队夜班标配是辣条配板蓝根，别笑，一辣一凉，吃完特别清醒，适合盯着封锁墙发呆。' },
+      { author:'第七观测站 · 记录官', lv:'L2', time:'2026-08-22 19:30', body:'我就是那个说要写匿名信的。更正一下，不是匿名信，是实名建议书。土豆泥这个食物，现在全系统都有心理阴影，懂的都懂，不懂的别去查。' },
+    ]},
+  { id:'l5', title:'新来的巡检员问：为什么站上所有镜子都蒙着布？', author:'边界观测站 · 站长', lv:'L2', time:'2026-08-17 21:26',
+    body:'统一回复一下，以后新同事来了直接给他们看这个帖子：\n\n一、不是怕镜子，是怕「镜子里多出来的东西」。低 ΔR 环境下偶尔会出现镜像与本人不同步的现象，多数无害，但你没法保证每次都无害。\n\n二、蒙布是缓冲，不是封印。真有问题蒙布没用，有用的是隔壁屋的认知校验铃。\n\n三、想照镜子的，值班室那面小的可以用，照之前先看一眼布还在不在。布如果不在了，不要照，先来找我。\n\n四、不要问「布为什么会不在」。', 
+    replies:[
+      { author:'界域巡检员 · 新人', lv:'L1', time:'2026-08-17 21:58', body:'谢谢站长，我就是那个新来的。看完回复更睡不着了。另外我没有问第四条。我不会问的。' },
+      { author:'认知校验官 · 轮值', lv:'L3', time:'2026-08-17 22:40', body:'补一条正式说明：镜像不同步现象的年均上报量是个位数，绝大多数经校验为当事人熬夜太久。先睡觉，再害怕。这也是我局优良传统。' },
+    ]},
+  { id:'l6', title:'[树洞] 今天是我入职三周年，也是我忘了自己入职纪念日的第一年', author:'匿名（已备案）', lv:'L2', time:'2026-08-14 23:59',
+    body:'上个月做了一次例行记忆减压。\n\n回来后一切正常，工作正常，报告照写，直到刚才整理柜子，翻出一张去年的今天写给自己的便签：「入职两周年，还在，真好。」\n\n我盯着那张便签看了很久。我不记得写过它。字迹是我的。\n\n按流程我该去报备，我知道。但今晚就先在这说吧：便签我留下了。明年的今天如果我又不记得了，希望还能再翻出来一次。\n\n——还在。真好。', 
+    replies:[
+      { author:'存在医师 · 夜班', lv:'L2', time:'2026-08-15 00:20', body:'看到了。不催你报备，但明天来我这坐一会儿，不谈档案，就聊聊那张便签。我们科有句话：忘掉的事情拿不回来，但写下它的那个人还在。这就够重建一个锚点了。' },
+      { author:'封存书记官 · 见习', lv:'L1', time:'2026-08-15 01:07', body:'匿名树洞照例不存档，但这层楼我想破例抄进自己的私人笔记。我们删掉的东西太多了，总得有人偷偷记住一点。' },
+    ]},
+],
+vault: [
+  { id:'v1', pin:true, title:'【封存】监测目标「七章」近期动向摘要（L3 及以上）', author:'高危知识封存库 · 档案席直属', lv:'L4', time:'2026-08-15 03:00',
+    body:'<span class="warn-line">警告：本条目带有档案封存标记——阅读本档案即被目标感知。确认继续前，请再次核对你的减压排期。</span>\n\n目标「七章」（黄昏会议圆桌第七席投影）近期活动频率上升，特征如下：\n\n一、逆向指针幻影出现地点与静默分域旧灯塔群的地理投影存在<span class="redact">██████</span>重合；\n二、目标对某未登记异常体（代号：<span class="redact">██</span>）表现出持续性的、非实验目的的关注，动机不明；\n三、目标曾通过中间渠道向我局某站点「赠送」土豆泥。已按未申报接触处理，涉事土豆泥已封存。\n\n评估：暂不升级处置等级。目标的「兴趣」目前是单向的。维持观测，不接触，不回应。\n\n——档案席直属 · 封存书记官',
+    replies:[
+      { author:'秩序裁定官 · 轮值', lv:'L4', time:'2026-08-15 09:30', body:'第三条再看一遍还是觉得离谱。但规矩就是规矩：不接触，不回应，土豆泥不许吃。' },
+      { author:'观测席直属 · 分析员', lv:'L4', time:'2026-08-15 11:12', body:'提醒一句：目标「兴趣」的单向性是我们的评估，不是事实。A-12 号档案建议交叉调阅，那个未登记异常体的档案编号，在本帖语境下不予显示。想调阅的走分级解密局，别在这问。' },
+    ]},
+  { id:'v2', pin:true, title:'【封存】特殊灾象「虫灾宇宙」处置总结（节选 · L3 可读部分）', author:'清算席直属 · 终末事务科', lv:'L4', time:'2026-07-30 02:00',
+    body:'<span class="warn-line">警告：本条目为终末级事件节选，完整版仅存于高危知识封存库物理层。阅读本节选中如有耳鸣、幻触或「纸页在动」的错觉，立即停止并报告认知校验官。</span>\n\n灾象定性：腐朽型规则坍缩，伴生自我复制的<span class="redact">████████</span>。\n\n标准处置链执行情况：封锁 — 降ΔR — 逆向修复 — 锚点重建。四步全部执行，无一成功。\n\n失败原因（可公开部分）：\n\n一、该宇宙的锚点结构已被灾象本身「学习」，任何重建尝试都会成为它的养料；\n二、ΔR 下降曲线是伪装，实际读数在第七周反超初始值 340%；\n三、<span class="redact">████████████，本句按档案席命令整体涂销。</span>\n\n最终决议：宇宙级隔离，门户永久封闭，编号转入「不可重返」名录。\n\n经验只有一条，刻在终末事务科的门上：锚点优先于火力——但当锚点本身就是饵的时候，转身要快。\n\n——清算席直属 · 终末事务科',
+    replies:[
+      { author:'修复总署 · 副署长', lv:'L4', time:'2026-07-30 09:14', body:'「无一成功」四个字我盯了一整夜。修复总署申请调阅失败案例的完整协议链，不是为了追责——下一个类似灾象出现时，我们得知道哪一步先崩的。' },
+      { author:'清算席直属 · 终末事务科', lv:'L4', time:'2026-07-30 10:02', body:'协议链可以调，来我科，两个人以上同行，看完做减压。另外回答你们没问出口的那个问题：撤离窗口 11 分钟，出来了 3 个人。名录上有名字的，一个都没少记。' },
+    ]},
+  { id:'v3', title:'【封存】「投影叠合异常」同位体识别规程 第 7 次修订（L3）', author:'分级解密局 · 规程室', lv:'L3', time:'2026-07-22 16:40',
+    body:'本次修订新增条款三条，L3 及以上强制执行：\n\n一、遇到「另一个你」时，禁止确认彼此谁为「原版」。确认行为本身会完成叠合。\n\n二、同位体出示的「共同记忆」不得作为身份证据。它记得你小学三年级的同桌，恰恰说明它不是你的同桌。\n\n三、若同位体先一步联系你的亲友，处置优先级变更为最高——它不是在冒充你，它是在替换你的锚点。\n\n附则：执行条款三时，现场指挥必须是「不认识你」的人。熟人下不了手，这是被 214 个案例验证过的人性，不是纪律问题。\n\n——分级解密局 · 规程室',
+    replies:[
+      { author:'回响拆解司 · 队长', lv:'L3', time:'2026-07-22 18:55', body:'条款三补一个现场经验：替换从来不是一瞬间完成的，它先借走你的快递，再借走你的同事，最后才借你的脸。发现任何「小事对不上」，立刻报，别自己核对——你核对的过程就是它在核对答案。' },
+    ]},
+],
+};
+
+/* ================= 论坛状态与存储 ================= */
+const state = { board:'notice', thread:null, composerMode:null };
+const STORE_KEY = 'msb_user_posts_v1';
+function loadUserPosts(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }catch(e){ return {}; } }
+function saveUserPosts(d){ localStorage.setItem(STORE_KEY, JSON.stringify(d)); }
+function allThreads(boardId){
+  const user = (loadUserPosts()[boardId] || []);
+  const userIds = new Set(user.map(t => t.id));
+  const seed = (SEED[boardId] || []).filter(t => !userIds.has(t.id));
+  return [...user, ...seed];
+}
+function canAccess(board){
+  if(!board.lock) return true;
+  return currentUser() && currentUser().level >= board.lock;
+}
+function findThread(boardId, tid){
+  return allThreads(boardId).find(t => t.id === tid);
+}
+
+/* ================= 渲染 ================= */
+const boardListEl = document.getElementById('boardList');
+const threadListEl = document.getElementById('threadList');
+const threadViewEl = document.getElementById('threadView');
+const crumbEl = document.getElementById('crumb');
+const composerEl = document.getElementById('composer');
+const newThreadBtn = document.getElementById('newThreadBtn');
+
+function renderBoards(){
+  boardListEl.innerHTML = '';
+  BOARDS.forEach(b => {
+    const locked = b.lock && !canAccess(b);
+    const div = document.createElement('div');
+    div.className = 'board' + (state.board === b.id ? ' active' : '') + (locked ? ' locked' : '');
+    div.innerHTML = `<div class="board-head">${b.name}${b.lock ? `<span class="lock-tag">[${b.lock}]</span>` : ''}</div>
+                     <div class="board-desc">${locked ? '权限不足，内容不予渲染。' : b.desc}</div>`;
+    div.addEventListener('click', () => {
+      if(locked){
+        threadViewEl.style.display = 'none'; composerEl.style.display = 'none';
+        threadListEl.innerHTML = `<div class="fw-block">⚠ 认知防火墙拦截 ⚠<br><br>访问 [${b.name}] 需要 ${b.lock} 及以上权限。<br>你当前的权限为 ${currentUser().level}。<br><br>本次访问尝试已被记录。</div>`;
+        crumbEl.textContent = `> /${b.id} — 访问被拒绝`;
+        state.board = b.id; state.thread = null;
+        renderBoards(); return;
+      }
+      state.board = b.id; state.thread = null;
+      renderBoards(); renderThreadList(b.id);
+    });
+    boardListEl.appendChild(div);
+  });
+}
+
+function renderThreadList(boardId){
+  state.thread = null;
+  threadViewEl.style.display = 'none'; composerEl.style.display = 'none';
+  threadListEl.style.display = '';
+  const b = BOARDS.find(x => x.id === boardId);
+  crumbEl.textContent = `> /${b.id} ${b.name}`;
+  newThreadBtn.style.display = b.ro ? 'none' : '';
+  const threads = allThreads(boardId);
+  if(!threads.length){
+    threadListEl.innerHTML = '<div class="empty-tip">— 本版块暂无帖子，等你来发第一帖 —</div>';
+    return;
+  }
+  threadListEl.innerHTML = '';
+  threads.forEach(t => {
+    const row = document.createElement('div');
+    row.className = 'thread-row';
+    const rc = (t.replies ? t.replies.length : 0);
+    row.innerHTML = `<div class="thread-title">${t.pin ? '<span class="pin">[置顶]</span>' : ''}${t.title}</div>
+      <div class="thread-count">回复 ${rc}</div>
+      <div class="thread-meta">${t.author} · [${t.lv}] · ${t.time}${t.mine ? ' · （我发的）' : ''}</div>`;
+    row.addEventListener('click', () => openThread(boardId, t.id));
+    threadListEl.appendChild(row);
+  });
+}
+
+function postHTML(p){
+  return `<div class="post">
+    <div class="post-head"><span>${p.author} <span class="lv">[${p.lv}]</span></span><span>${p.time}</span></div>
+    <div class="post-body">${p.body}</div>
+  </div>`;
+}
+
+function openThread(boardId, tid){
+  const t = findThread(boardId, tid);
+  if(!t) return;
+  state.thread = tid;
+  threadListEl.style.display = 'none';
+  threadViewEl.style.display = '';
+  composerEl.style.display = 'none';
+  const b = BOARDS.find(x => x.id === boardId);
+  crumbEl.textContent = `> /${b.id} / 帖 #${tid}`;
+  let html = `<span class="back-link" id="backToList"><< 返回帖子列表</span>
+    <div class="thread-title-big">${t.title}</div>
+    ${postHTML(t)}`;
+  (t.replies || []).forEach(r => html += postHTML(r));
+  if(!b.ro){
+    html += `<div style="margin-top:8px"><button class="t-btn" id="replyBtn">[ 回复本帖 ]</button></div>`;
+  }
+  threadViewEl.innerHTML = html;
+  document.getElementById('backToList').addEventListener('click', () => renderThreadList(boardId));
+  const rb = document.getElementById('replyBtn');
+  if(rb) rb.addEventListener('click', () => openComposer('reply'));
+  threadViewEl.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* ================= 发帖 / 回帖 ================= */
+const postTitleEl = document.getElementById('postTitle');
+const postBodyEl = document.getElementById('postBody');
+const composerTitleEl = document.getElementById('composerTitle');
+
+function openComposer(mode){
+  state.composerMode = mode;
+  composerEl.style.display = '';
+  composerTitleEl.textContent = mode === 'reply' ? '回复本帖' : '发布新帖';
+  postTitleEl.style.display = mode === 'reply' ? 'none' : '';
+  postTitleEl.value = ''; postBodyEl.value = '';
+  composerEl.scrollIntoView({behavior:'smooth', block:'center'});
+  postBodyEl.focus();
+}
+newThreadBtn.addEventListener('click', () => openComposer('new'));
+document.getElementById('postCancel').addEventListener('click', () => composerEl.style.display = 'none');
+
+function nowStr(){
+  const d = new Date(), p = n => String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+
+document.getElementById('postSubmit').addEventListener('click', () => {
+  const u = currentUser();
+  const body = postBodyEl.value.trim();
+  if(!body){ postBodyEl.focus(); return; }
+  const store = loadUserPosts();
+  const bid = state.board;
+  store[bid] = store[bid] || [];
+  if(state.composerMode === 'new'){
+    const title = postTitleEl.value.trim();
+    if(!title){ postTitleEl.focus(); return; }
+    store[bid].unshift({
+      id:'u' + Date.now(), mine:true, title,
+      author:`${u.name} · ${u.role}`, lv:u.level, time:nowStr(),
+      body: body.replace(/</g,'&lt;'), replies: []
+    });
+  } else {
+    const tid = state.thread;
+    const t = store[bid].find(x => x.id === tid);
+    const reply = { author:`${u.name} · ${u.role}`, lv:u.level, time:nowStr(), body: body.replace(/</g,'&lt;') };
+    if(t){ t.replies = t.replies || []; t.replies.push(reply); }
+    else {
+      // 回复种子帖：把种子帖浅拷贝进用户存储以挂回复
+      const seedT = (SEED[bid] || []).find(x => x.id === tid);
+      if(seedT){
+        const copy = JSON.parse(JSON.stringify(seedT));
+        copy.replies = copy.replies || []; copy.replies.push(reply);
+        store[bid].unshift(copy);
+      }
+    }
+  }
+  saveUserPosts(store);
+  composerEl.style.display = 'none';
+  if(state.composerMode === 'new') renderThreadList(bid);
+  else openThread(bid, state.thread);
+});
+
+/* ================= 登出 ================= */
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  sessionStorage.removeItem('msb_auth');
+  sessionStorage.removeItem('msb_booted');
+  booted = false;
+  location.hash = '#/';
+});
+
+route();
+</script>
+</body>
+</html>

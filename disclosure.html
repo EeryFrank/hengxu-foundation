@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>信息公开 · 恒序基金会</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -15,6 +16,7 @@
     </a>
     <nav class="nav">
       <a href="about.html">关于我们</a>
+      <a href="team.html">工作团队</a>
       <a href="programs.html">公益项目</a>
       <a href="disclosure.html">信息公开</a>
       <a href="news.html">基金会动态</a>
@@ -39,12 +41,33 @@
       <div class="disc">
         <span class="yr">GOVERNANCE</span>
         <h4>治理结构</h4>
-        <p>理事会现有理事九名，设监事一名。重大事项经理事会三分之二以上表决通过后执行。</p>
+        <p>理事会现有理事九名，设监事一名。重大事项经理事会三分之二以上表决通过后执行。理事会名单及述职报告收录于年度报告全文，可向基金会办公室申请查阅。</p>
       </div>
       <div class="disc">
         <span class="yr">DONATION</span>
         <h4>捐赠查询</h4>
         <p>捐赠人可凭捐赠编号查询款项去向。本基金会不公开募捐，仅接受定向捐赠。</p>
+      </div>
+    </div>
+
+    <div class="sub-sec">
+      <h3>年度报告 · 近五年</h3>
+      <table class="tbl">
+        <tr><th>年度</th><th>总收入</th><th>总支出</th><th>项目支出占比</th><th></th></tr>
+        <tbody id="rpRows"></tbody>
+      </table>
+    </div>
+
+    <div class="sub-sec">
+      <h3>捐赠去向查询</h3>
+      <div class="form">
+        <div class="f-field">
+          <label>捐赠编号</label>
+          <input type="text" id="donInput" autocomplete="off" spellcheck="false" placeholder="格式：HX-2024-01827，见捐赠回执">
+        </div>
+        <button class="f-btn" id="donBtn">查 询</button>
+        <div id="donResult"></div>
+        <p class="don-hint">查询结果仅展示款项去向摘要；本基金会不公开募捐，仅接受定向捐赠。</p>
       </div>
     </div>
   </div>
@@ -64,6 +87,7 @@
       <div class="foot-col">
         <h5>基金会</h5>
         <a href="about.html">关于我们</a>
+      <a href="team.html">工作团队</a>
         <a href="programs.html">公益项目</a>
         <a href="disclosure.html">信息公开</a>
       </div>
@@ -78,9 +102,19 @@
       <span>© 1879–2026 恒序基金会 · 沪ICP备XXXXXXXX号</span>
       <span class="backdoor" id="backdoor" title="">内部通道</span>
     </div>
+    <div class="oc-disclaimer">本站为原创角色（OC）创作设定 · 虚构网站：恒序基金会及站内所有数据、人员、项目、联系方式均为虚构，不代表任何真实机构，亦不接受任何实际捐赠。</div>
   </div>
 </footer>
 <script src="assets/bbs-data.js"></script>
+<script src="assets/site-data.js"></script>
 <script src="assets/main.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/hx-ui.js"></script>
 </body>
 </html>
+
+<!-- ============================================================
+  OC 免责声明：本页面为原创角色（OC）创作项目的虚构网站组成部分。
+  恒序基金会、万界稳定局及站内所有数据、人物、组织、事件均为虚构，
+  不代表任何真实机构，亦不接受任何实际捐赠。仅供创作交流与非商业演示。
+============================================================ -->
